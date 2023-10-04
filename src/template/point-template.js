@@ -1,20 +1,22 @@
-import { formatEventDate, formatEventTimeFrom,formatEventTimeTo, getEventDuration, getRandomValue } from '../utils/utils.js';
+import { formatMainEventDate, formatEventTimeFrom,formatEventTimeTo, getEventDuration, getRandomValue } from '../utils/utils.js';
 import { createOfferTemplate } from './offer-template.js';
 
 
 function createPointTemplate({point}){
 
 
-  const { destinations, isFavorite, type, eventDate, dateFrom, dateTo, price, offers} = point;
+  const { destinations, isFavorite, type, dateFrom, dateTo, price, offers} = point;
 
-  const date = formatEventDate (eventDate);
+  const date = formatMainEventDate (dateFrom);
   const timeFrom = formatEventTimeFrom (dateFrom);
   const timeTo = formatEventTimeTo (dateTo);
   const duration = getEventDuration(dateFrom, dateTo);
   const favoriteClassName = isFavorite
     ? 'event__favorite-btn event__favorite-btn--active'
     : 'event__favorite-btn event__favorite-btn--disabled';
+
   const offersByType = offers.find((offerByType) => offerByType.type === type);
+
   const destination = getRandomValue(destinations);
   // const destinationsByName = destinations.find((destinationByName) => destinationByName.name === point.id);
 

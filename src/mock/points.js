@@ -37,11 +37,11 @@ export default class MockService extends Observable {
 
   generatePoints() {
 
-    const destinations = this.generateDestination(4);
+    const destinations = this.generateDestination(5);
 
     return Array.from({ length: POINT_COUNT }, (_el, idx) => ({
       id: self.crypto.randomUUID(),
-      eventDate: generateRandomDate(new Date(2023, 1, 1), new Date()),
+      // eventDate: generateRandomDate(new Date(2023, 1, 1), new Date()),
       dateFrom: generateRandomDate(new Date(2023, 1, 1), new Date()),
       dateTo: generateRandomDate(new Date(2023, 1, 1), new Date()),
       price: getRandomNumber(),
@@ -55,7 +55,7 @@ export default class MockService extends Observable {
     }));
   }
 
-  get (){
+  get(){
     return this.#points;
   }
 }
